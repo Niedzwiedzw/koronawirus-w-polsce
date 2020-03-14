@@ -1,14 +1,48 @@
 <template>
-  <div id="app">
+<div id="app">
+  <cov-header />
+  <main>
     <router-view/>
-  </div>
+  </main>
+  <cov-footer />
+</div>
 </template>
 
+<script lang="ts">
+import CovFooter from './components/CovFooter.vue'
+import CovHeader from './components/CovHeader.vue'
+
+export default {
+  components: { CovFooter, CovHeader }
+}
+</script>>
+
 <style lang="scss">
-  @import "src/styles/main";
-  #app {
-    @include grid-center;
-    background-color: $color-darker;
-    overflow-y: scroll;
+@import "src/styles/main";
+header { grid-area: header; }
+main { 
+  grid-area: main;
+  display: flex;
+  justify-content: center;
+}
+footer { grid-area: footer; }
+
+#app {
+  height: 100%;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  grid-gap: 2em;
+  grid-template-areas:
+    'header'
+    'main'
+    'footer';
+  
+  @include for-desktop {
+    grid-gap: 2em;
+    grid-template-areas:
+      'header header header'
+      'main   main   main'
+      'footer   footer footer';
   }
+}
 </style>
