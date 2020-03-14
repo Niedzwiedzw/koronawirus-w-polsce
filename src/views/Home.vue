@@ -1,10 +1,8 @@
 <template>
   <div class="Home">
-    <div v-for="city of cities" :key="city.name">
-      <p>{{city.name}}</p>
-      <p>{{city.district}}</p>
-      <p>przypadków: {{city.cases}}</p>
-    </div>
+    <section class="city-boxes">
+      <cov-city-box class="city-box" v-for="city of cities" :key="city.slug" :city="city"/>
+    </section>
   </div>
 </template>
 
@@ -12,19 +10,17 @@
 import {defineComponent, ref, onMounted} from '@vue/composition-api';
 import {City} from "@/models";
 import {getCities} from "@/api-client/requests";
+import CovCityBox from "@/views/components/home/CovCityBox.vue";
+import {useCities} from "@/useCases";
 
 export default defineComponent({
     name: "Home",
+    components: {
+        CovCityBox,
+    },
     setup() {
-        const cities = ref<City[]>([]);
-        const loading = ref(false);
-        onMounted(async () => {
-            loading.value = true;
-            cities.value = (await getCities()) ?? [];
-            loading.value = false;
-        });
         return {
-            cities,
+            ...useCities(),
         };
     }
 })
@@ -34,6 +30,11 @@ export default defineComponent({
 @import "src/styles/main";
 
 .Home {
-
+  @include grid-center;
+  .city-boxes {
+    @include grid-center;
+    grid-template-columns: repeat(auto-fit, minmax($city-box-size + 1rem, 1fr));
+    grid-gap: 1rem;
+  }
 }
 </style>
