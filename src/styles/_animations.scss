@@ -23,3 +23,20 @@
     opacity: 1;
   }
 }
+
+@keyframes dance {
+  from {
+    transform: initial;
+  }
+
+  50% {
+    transform: translateY(10%) rotate(5deg);
+  }
+  to {
+    transform: initial;
+  }
+}
+
+@mixin dance {
+  animation: dance .71s alternate linear infinite;
+}

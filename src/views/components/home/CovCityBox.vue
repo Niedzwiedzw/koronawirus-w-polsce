@@ -103,14 +103,17 @@ export default defineComponent({
 
   .total-cases {
     grid-area: total-cases;
+    @include dance;
   }
 
   .recovered {
     grid-area: recovered;
+    @include dance;
   }
 
   .deaths {
     grid-area: deaths;
+    @include dance;
   }
 }
 </style>

@@ -19,6 +19,10 @@ export default defineComponent({
         CovCityBox,
     },
     setup() {
+        onMounted(() => {
+           const audio = new Audio('trzymamy-sie.mp3');
+           audio.play();
+        });
         return {
             ...useCities(),
         };
