@@ -1,6 +1,7 @@
 import {CityRaw} from "@/api-client/city";
 import moment from 'moment';
 import slugify from '@sindresorhus/slugify';2
+moment.locale('pl');
 
 export class City {
     public constructor(private raw: CityRaw) {}
@@ -10,9 +11,11 @@ export class City {
     public get inStableCondition(): number { return parseInt(this.raw['Stan Stabilny lub Dobry']); }
     public get criticalCondition(): number { return parseInt(this.raw['Stan Ciezki']); }
     public get deaths(): number { return parseInt(this.raw['Zgony']); }
-    public get weeklyIncrease(): number { return parseInt(this.raw['zeszly tydzien (+)']); }
+    public get weeklyIncrease(): number {
+        return parseInt(this.raw['zeszly tydzien (+)'].replace(/[-\s.]/, ''));
+    }
     public get monthlyIncrease(): number { return parseInt(this.raw['miesiac (+)']); }
     public get recovered(): number { return parseInt(this.raw['Zdrowi']); }
-    public get lastCase(): moment.Moment { return moment(this.raw['data ostatniego przypadku']); }
-    public get slug(): string { return slugify(this.name) }
+    public get lastCase(): moment.Moment { return moment(this.raw['data ostatniego przypadku'], 'DD.MM.YYYY'); }
+    public get slug(): string { return slugify(this.name); }
 }
