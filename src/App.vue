@@ -9,5 +9,6 @@
   #app {
     @include grid-center;
     background-color: $color-darker;
+    overflow-y: scroll;
   }
 </style>
