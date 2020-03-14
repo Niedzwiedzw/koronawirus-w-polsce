@@ -1,4 +1,4 @@
-import {map, isNil, filter} from 'lodash';
+import {map, isNil, filter, find} from 'lodash';
 import {City} from "@/models";
 import {CityRaw, getRawCities} from "@/api-client/city";
 import {DEBUG} from '@/config';
@@ -25,4 +25,7 @@ export async function getDocument(): Promise<string[][] | null> {
 
 export async function getCities(): Promise<City[]> {
     return map(filter((await getRawCities()), (c) => !isNil(c)), (raw) => new City(raw as CityRaw));
+}
+export async function getCity(slug: string): Promise<City | null> {
+    return find((await getCities()), (c) => c.slug === slug) ?? null;
 }
