@@ -4,13 +4,11 @@
 @import './animations';
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700,900&display=swap');
 
-html {
-}
 body {
   & * {
     font-family: 'Montserrat', sans-serif;
   }
-
+  min-height: 100%;
   color: $white;
 
   &, html {
