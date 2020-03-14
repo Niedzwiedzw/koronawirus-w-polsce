@@ -31,8 +31,8 @@ export interface CityRaw {
     '% Stan Ciezki': string;
     '% Smierc': string;
     'gowno_2': null; // padding
-    'miesiac (+)': null; // padding
-    'zeszly tydzien (+)': null; // padding
+    'miesiac (+)': string; // padding
+    'zeszly tydzien (+)': string; // padding
 }
 
 export const CITY_FIELDS: Array<keyof CityRaw> = [
