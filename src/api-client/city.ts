@@ -3,14 +3,11 @@ import {getDocument} from "@/api-client/requests";
 import {slice2d} from "@/api-client/helpers";
 
 export const CITIES_START_Y = 5;
-export const CITIES_END_Y = 26;
+export const CITIES_END_Y = 28;
 export const CITIES_START_X = 1;
 export const CITIES_END_X = 21;
 export const CITIES_START: [number, number] = [CITIES_START_X, CITIES_START_Y];
 export const CITIES_END: [number, number] = [CITIES_END_X, CITIES_END_Y];
-
-
-
 
 export interface CityRaw {
     'Miasto': string;
