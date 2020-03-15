@@ -3,14 +3,14 @@
     <div class="nav">
       <div class="nav__right">
         <div class="nav__right__logo nav__logo">
-          <img src="@/assets/logo.png">
+          <img src="logo.png">
         </div>
         <span class="nav__right__title nav__title desktop-only">
           <p class="nav__title--first-line">Koronawirus: SARS-COV-2 - COVID-19 </p>
           <p class="nav__title--second-line">Statystyka w Polsce</p>
         </span>
       </div>
-      <div class="nav__left nav-left desktop-only">
+      <div class="nav__left nav-left">
         <div class="nav-left__options">
           Ostatnia aktualizacja: {{lastUpdatePretty}}
         </div>
@@ -80,7 +80,12 @@ header {
   }
 
   &__left {
-    width: 30%;
+    width: 40%;
+    font-size: $font-small;
+
+    @include for-mobile {
+      font-size: $font-x-small;
+    }
   }
 }
 </style>
