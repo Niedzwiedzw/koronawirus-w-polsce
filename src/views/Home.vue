@@ -4,8 +4,11 @@
       <h3 class="discord-title">
         Konwersacja
       </h3>
-      <iframe src="https://discordapp.com/widget?id=687997179620622388&theme=dark"
-              width="295" height="200" allowtransparency="true" frameborder="0"></iframe>
+      <iframe src="https://discordapp.com/widget?id=687997179620622388"
+              width="295"
+              height="295"
+              allowtransparency="true"
+              frameborder="0"></iframe>
     </div>
     <transition-group name="slide-down" tag="section" class="city-boxes">
       <cov-city-box
