@@ -7,7 +7,7 @@ import {getCities, getCity, getLastUpdate} from "@/api-client/requests";
 export function useLoading() {
     const loading = ref(false);
 
-    const withLoading = async (procedure: () => Promise<any>) => {
+    const withLoading = async (procedure: () => Promise<void>) => {
       loading.value = true;
       await procedure();
       loading.value = false;
@@ -54,7 +54,7 @@ export function useCity(citySlug: string) {
 export function useLastUpdate() {  // remember to name-space 'loading' variable when merging multiple use-cases
     const {withLoading, ...rest} = useLoading();
     const lastUpdate = ref<Moment | null>(null);
-
+    const lastUpdatePretty = computed<string>(() => lastUpdate.value?.fromNow() ?? '-- brak --')
     onMounted(async () => {
         withLoading(async () => {
             lastUpdate.value = await getLastUpdate();
@@ -63,6 +63,7 @@ export function useLastUpdate() {  // remember to name-space 'loading' variable 
 
     return {
         lastUpdate,
+        lastUpdatePretty,
         ...rest,
     }
 }

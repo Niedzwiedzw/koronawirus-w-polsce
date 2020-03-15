@@ -9,8 +9,8 @@
 </template>
 
 <script lang="ts">
-import CovFooter from './components/CovFooter.vue'
-import CovHeader from './components/CovHeader.vue'
+import CovFooter from './views/components/home/CovFooter.vue'
+import CovHeader from './views/components/home/CovHeader.vue'
 
 export default {
   components: { CovFooter, CovHeader }

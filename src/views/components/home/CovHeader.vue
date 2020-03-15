@@ -12,7 +12,7 @@
       </div>
       <div class="nav__left nav-left desktop-only">
         <div class="nav-left__options">
-          Ostatnia aktualizacja: {{lastUpdate}}
+          Ostatnia aktualizacja: {{lastUpdatePretty}}
         </div>
       </div>
     </div>
@@ -20,22 +20,20 @@
 </template>
 
 <script lang="ts">
-import { ref } from '@vue/composition-api'
+import {useLastUpdate} from "@/useCases";
 
 
 export default {
   setup() {
-    const lastUpdate = ref('14.03.2020, 14:50');
-
-    return {
-      lastUpdate
-    }
+      return {
+          ...useLastUpdate(),
+      }
   }
 }
 </script>
 
 <style scoped lang="scss">
-@import "src/styles/main";
+@import "../../../styles/main";
 
 header {
   width: 100%;

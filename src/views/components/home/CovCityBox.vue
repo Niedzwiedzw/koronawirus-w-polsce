@@ -27,7 +27,7 @@ export default defineComponent({
             required: true,
         }
     },
-    setup(props) {
+    setup() {
         const showSummary = ref(false);
         return {
           showSummary,
