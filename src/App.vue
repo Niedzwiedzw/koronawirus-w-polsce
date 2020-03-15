@@ -36,13 +36,5 @@ footer { grid-area: footer; }
     'header'
     'main'
     'footer';
-  
-  @include for-desktop {
-    grid-gap: 2em;
-    grid-template-areas:
-      'header header header'
-      'main   main   main'
-      'footer   footer footer';
-  }
 }
 </style>
