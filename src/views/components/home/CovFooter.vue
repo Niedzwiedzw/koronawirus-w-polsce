@@ -1,7 +1,7 @@
 <template>
   <footer>
     <div class="footer">
-      <h3 clas="footer__title">Custom footer</h3>
+      <h3 clas="footer__title">&nbsp;</h3>
     </div>
   </footer>  
 </template>
