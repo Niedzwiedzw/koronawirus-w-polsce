@@ -1,8 +1,15 @@
 <template>
   <div class="home">
-    <section class="city-boxes">
+    <transition-group name="slide-down" tag="section" class="city-boxes">
+      <cov-city-box
+          v-if="poland !== null"
+          class="poland-box"
+          :city="poland"
+          :key="poland.slug"
+      ></cov-city-box>
+
       <cov-city-box class="city-box" v-for="city of cities" :key="city.slug" :city="city"/>
-    </section>
+    </transition-group>
   </div>
 </template>
 
@@ -34,6 +41,11 @@ export default defineComponent({
     @include grid-center;
     grid-template-columns: repeat(auto-fit, minmax($city-box-size + 1rem, 1fr));
     grid-gap: 1rem;
+
+    .poland-box {
+      border: 5px solid $color-secondary;
+      grid-column: 1 / -1;
+    }
   }
 }
 </style>

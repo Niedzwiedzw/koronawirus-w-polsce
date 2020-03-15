@@ -28,7 +28,7 @@ export async function getDocument(): Promise<string[][] | null> {
 }
 
 export async function getCities(): Promise<City[]> {
-    return map(filter((await getRawCities()), (c) => !isNil(c)), (raw) => new City(raw as CityRaw));
+    return map(filter((await getRawCities()), (c) => !isNil(c)), (raw) => City.fromRaw(raw as CityRaw));
 }
 
 export async function getCity(slug: string): Promise<City | null> {

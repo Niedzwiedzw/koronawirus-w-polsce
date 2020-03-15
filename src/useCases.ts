@@ -22,7 +22,7 @@ export function useLoading() {
 export function useCities() {
     const {withLoading, ...rest} = useLoading();
     const cities = ref<City[]>([]);
-
+    const poland = computed<City | null>(() => City.fromMultiple(cities.value, 'Polska'));
     onMounted(() => {
         withLoading(async () => {
             cities.value = await getCities();
@@ -32,6 +32,7 @@ export function useCities() {
     return {
         cities,
         ...rest,
+        poland,
     };
 }
 
@@ -54,7 +55,7 @@ export function useCity(citySlug: string) {
 export function useLastUpdate() {  // remember to name-space 'loading' variable when merging multiple use-cases
     const {withLoading, ...rest} = useLoading();
     const lastUpdate = ref<Moment | null>(null);
-    const lastUpdatePretty = computed<string>(() => lastUpdate.value?.fromNow() ?? '-- brak --')
+    const lastUpdatePretty = computed<string>(() => lastUpdate.value?.fromNow() ?? '-- brak --');
     onMounted(async () => {
         withLoading(async () => {
             lastUpdate.value = await getLastUpdate();
